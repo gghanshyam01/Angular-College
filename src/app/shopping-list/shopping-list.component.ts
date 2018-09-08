@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IngredientService } from '../ingredient.service';
+import { NgForm } from '@angular/forms';
+
 import { Ingredient } from '../recipe/ingredient.model';
 
 @Component({
@@ -19,7 +21,10 @@ export class ShoppingListComponent implements OnInit {
   }
 
   onAdd(ingredientName: string, quantity: number) {
-    // this.ingredientService.pushIngredients([new Ingredient(ingredientName, quantity)]);
-    console.log('TODO need to add');
+  }
+
+  onSubmit(form: NgForm) {
+    console.log(form);
+    this.ingredientService.pushIngredients([new Ingredient(form.value.recipeName, form.value.recipeQuantity)]);
   }
 }
